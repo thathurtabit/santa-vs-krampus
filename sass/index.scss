@@ -1,0 +1,6 @@
+$baseTransitionTime: 0.5s;
+
+.header {
+  text-align: left;
+  transition: transform $baseTransitionTime ease-out, opacity $baseTransitionTime ease-out;
+}
