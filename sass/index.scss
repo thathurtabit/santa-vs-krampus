@@ -1,6 +1,24 @@
-$baseTransitionTime: 0.5s;
+$baseTransitionTime:	0.5s;
+$red: 					#d96a71;
+$red2: 					adjust-color($red, 5%);
+
+.stage {
+	height: 100vh;
+	overflow: hidden;
+	position: relative;
+	
+	&::before,
+	&::after {
+		content: '';
+		background-color: $red;
+		height: 100vh;
+		position: absolute;
+		width: 100%;
+		z-index: -1;
+	}
+}
 
 .header {
-  text-align: left;
+  text-align: center;
   transition: transform $baseTransitionTime ease-out, opacity $baseTransitionTime ease-out;
 }
