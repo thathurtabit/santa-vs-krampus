@@ -1,6 +1,6 @@
 $baseTransitionTime:	0.5s;
 $red: 					#d96a71;
-$red2: 					adjust-color($red, 5%);
+$red2: 					adjust-color($red, 10%);
 
 .stage {
 	height: 100vh;
@@ -13,12 +13,46 @@ $red2: 					adjust-color($red, 5%);
 		background-color: $red;
 		height: 100vh;
 		position: absolute;
-		width: 100%;
+		top: 0;
+		width: 50%;
 		z-index: -1;
+	}
+
+	&::after {
+		background-color: $red2;
+		left: 50%;
 	}
 }
 
 .header {
+	left: 50%;
+	position: absolute;
   text-align: center;
+  top: 70px;
+  transform: translate(-50%, 0);
   transition: transform $baseTransitionTime ease-out, opacity $baseTransitionTime ease-out;
 }
+
+.healthbar {
+	display: flex;
+	flex: 1;
+}
+
+.healthbar__santa,
+.healthbar__krampus {
+	display: flex;
+	flex: 1;
+	padding: 30px;
+}
+
+.healthbar__krampus h3 {
+	order: 2;
+}
+
+.healthbar__santa-meter,
+.healthbar__krampus-meter {
+	flex: 1;
+	margin: 20px;
+}
+
+

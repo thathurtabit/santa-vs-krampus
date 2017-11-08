@@ -1,7 +1,36 @@
-// Set vars
-const stage = document.getElementsByClassName('stage')[0];
-const header = document.getElementsByClassName('header')[0];
+// immediately-invoked function expression (IIFE)
+(function () {
 
-window.onload = function () {
-  stage.classList.add('ready');
-}
+	// Set vars
+	const stage = document.getElementsByClassName('stage')[0];
+	const header = document.getElementsByClassName('header')[0];
+	
+
+	const punch = function() {
+		document.addEventListener('keydown', (event) => {
+		  const keyName = event.key;
+		  console.log(`Key Press: ${keyName}`);
+		});
+	}
+
+	// Start
+	const start = function() {
+		punch();
+	}
+
+	// Reset
+	const reset = function() {
+
+	}
+
+
+
+
+	window.onload = function () {
+	  stage.classList.add('ready');
+	  console.log('Page loaded.');
+	  start(); // Kick things off when we've loaded everything
+	}	
+
+  console.log('Welcome to the Internet. Please follow me.');
+}());

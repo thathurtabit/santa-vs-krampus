@@ -7,9 +7,35 @@
     background-color: #d96a71;
     height: 100vh;
     position: absolute;
-    width: 100%;
+    top: 0;
+    width: 50%;
     z-index: -1; }
+  .stage::after {
+    background-color: #e36a71;
+    left: 50%; }
 
 .header {
+  left: 50%;
+  position: absolute;
   text-align: center;
+  top: 70px;
+  transform: translate(-50%, 0);
   transition: transform 0.5s ease-out, opacity 0.5s ease-out; }
+
+.healthbar {
+  display: flex;
+  flex: 1; }
+
+.healthbar__santa,
+.healthbar__krampus {
+  display: flex;
+  flex: 1;
+  padding: 30px; }
+
+.healthbar__krampus h3 {
+  order: 2; }
+
+.healthbar__santa-meter,
+.healthbar__krampus-meter {
+  flex: 1;
+  margin: 20px; }
