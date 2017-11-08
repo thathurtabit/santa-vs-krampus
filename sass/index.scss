@@ -1,8 +1,11 @@
 $baseTransitionTime:	0.5s;
 $red: 					#d96a71;
 $red2: 					adjust-color($red, 10%);
+$white:					#fff;
 
 .stage {
+	color: $white;
+	font-family: 'Bangers';
 	height: 100vh;
 	overflow: hidden;
 	position: relative;
