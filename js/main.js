@@ -4,12 +4,13 @@
 	// Set vars
 	const stage = document.getElementsByClassName('stage')[0];
 	const header = document.getElementsByClassName('header')[0];
-	
+
 
 	const punch = function() {
 		document.addEventListener('keydown', (event) => {
 		  const keyName = event.key;
-		  console.log(`Key Press: ${keyName}`);
+		  const keyCoded = event.keyCode;
+		  console.log(`Key Press: ${keyName} | ${keyCoded}`);
 		});
 	}
 
