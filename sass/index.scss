@@ -27,8 +27,6 @@ $white:					#fff;
 	}
 }
 
-
-
 .header {
 	left: 50%;
 	position: absolute;
@@ -60,4 +58,39 @@ $white:					#fff;
 	margin: 20px;
 }
 
+.result {
+	background-color: $red2;
+	position: absolute;
+	visibility: hidden;
+}
 
+.instructions__santa,
+.instructions__krampus {
+	left: 20px;
+	padding: 20px;
+	position: absolute;
+}
+
+.instructions__krampus {
+	left: auto;
+	padding: 20px;
+	position: absolute;
+	right: 20px;
+}
+
+.instructions__krampus p {
+	text-align: right;
+}
+
+.santa-key-a,
+.santa-key-s,
+.krampus-key-k,
+.krampus-key-l {
+	border: 2px solid $white;
+	display: inline-block;
+	font-size: 25px;
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+	width: 25px;
+}
