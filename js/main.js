@@ -32,6 +32,13 @@
 		krampusPunch2:     	'l'
 	}
 
+	const canPunch = {
+		santaP1:  						true,
+		santaP2:  						true,
+		krampusP1:  					true,
+		krampusP2:  					true
+	}
+
 	// helper
 	const roundTo2 = (x, n) => {
     return parseFloat(Math.round(x * Math.pow(10, n)) / Math.pow(10, n)).toFixed(n);
@@ -48,73 +55,62 @@
 		reset:  						'Who wins?'
 	}
 
-	let logic = {
-		ableToFight: 			true
-	}
-
 	const punch = function() {
 
-		console.log(logic.ableToFight);
+		// Key Down
+		document.addEventListener('keydown', keyDown = function() {
+		  const keyName = event.key;
 
-		if (logic.ableToFight) {
+		  switch (keyName) {
+			  case attacks.santaPunch1:
+			  	pressedA();
+		    break;
+			  case attacks.santaPunch2:
+			  	pressedS();
+		    	checkKrampusHealth(keyName);
+		    break;
+		    case attacks.krampusPunch1:
+		    	pressedK();
+		    	checkSantaHealth(keyName);
+		    break;
+			  case attacks.krampusPunch2:
+		    	pressedL();
+		    	checkSantaHealth(keyName);
+		    break;
+			  default:
+			    break;
+			}
+		});
 
-			// Key Down
-			document.addEventListener('keydown', keyDown = function() {
-			  const keyName = event.key;
+		// Key Up
+		document.addEventListener('keyup', keyUp = function() {
+		  const keyName = event.key;
 
-			  switch (keyName) {
-				  case attacks.santaPunch1:
-				  	pressedA();
-			    	checkKrampusHealth(keyName);
+		  switch (keyName) {
+			  case attacks.santaPunch1:
+			  	leftA();
+		    break;
+			  case attacks.santaPunch2:
+					leftS();
+		    break;
+		    case attacks.krampusPunch1:
+		    	leftK();
+		    break;
+			  case attacks.krampusPunch2:
+		    	leftL();
+		    break;
+			  default:
 			    break;
-				  case attacks.santaPunch2:
-				  	pressedS();
-			    	checkKrampusHealth(keyName);
-			    break;
-			    case attacks.krampusPunch1:
-			    	pressedK();
-			    	checkSantaHealth(keyName);
-			    break;
-				  case attacks.krampusPunch2:
-			    	pressedL();
-			    	checkSantaHealth(keyName);
-			    break;
-				  default:
-				    break;
-				}
-			});
-
-			// Key Up
-			document.addEventListener('keyup', keyUp = function() {
-			  const keyName = event.key;
-
-			  switch (keyName) {
-				  case attacks.santaPunch1:
-				  	leftA();
-			    break;
-				  case attacks.santaPunch2:
-						leftS();
-			    break;
-			    case attacks.krampusPunch1:
-			    	leftK();
-			    break;
-				  case attacks.krampusPunch2:
-			    	leftL();
-			    break;
-				  default:
-				    break;
-				}
-			});
-
-		} 
+			}
+		});
 	}
 
 	// Krampus Health
-	const checkKrampusHealth = function(keyName) {
+	const checkKrampusHealth = function() {
 		if (health.krampus > 0.1) {
 			health.krampus = roundTo2((health.krampus -= 0.1), 2);
 			elements.krampusHealthMeter.setAttribute('value', health.krampus);
-			console.log(`Key Press: ${keyName} | Krampus health: ${health.krampus}%`);
+			console.log(`Krampus health: ${health.krampus}%`);
 		} else {			
 			elements.krampusHealthMeter.setAttribute('value', 0);
 			sanataWins();
@@ -123,18 +119,17 @@
 
 	// Santa Wins
 	const sanataWins = function() {
-		logic.ableToFight = false;
 		elements.stage.classList.add('fight-over', 'santa-wins');
 		elements.resultTitle.innerHTML = result.sanataWins;
 		removeEvents();
 	}
 
 	// Santa Health
-	const checkSantaHealth = function(keyName) {
+	const checkSantaHealth = function() {
 		if (health.santa > 0.1) {
 			health.santa = roundTo2((health.santa -= 0.1), 2);
 			elements.santaHealthMeter.setAttribute('value', health.santa);
-			console.log(`Key Press: ${keyName} | Santa health: ${health.santa}%`);
+			console.log(`Santa health: ${health.santa}%`);
 		} else {
 			elements.santaHealthMeter.setAttribute('value', 0);
 			krampusWins();
@@ -143,7 +138,6 @@
 
 	// Krampus Wins
 	const krampusWins = function() {
-		logic.ableToFight = false;
 		elements.stage.classList.add('fight-over', 'krampus-wins');
 		elements.resultTitle.innerHTML = result.krampusWins;
 		removeEvents();
@@ -151,10 +145,17 @@
 
 	const pressedA = function() {
 		elements.santaKey1.style.cssText = btnDownStyles;
+		// Throttle attach
+  	if (canPunch.santaPunch1) {
+  		checkKrampusHealth();
+  		canPunch.santaPunch1 = false; // turn off
+  	}
 	}
 
 	const leftA = function() {
 		elements.santaKey1.style.cssText = btnUpStyles;
+		// Turn on
+		canPunch.santaPunch1 = true;
 	}
 
 	const pressedS = function() {
@@ -195,13 +196,18 @@
 
 	// Reset
 	const reset = function() {
-		logic.ableToFight = true;
 		health.santa 			= 1;
 		health.krampus 		= 1;
 		elements.krampusHealthMeter.setAttribute('value', health.krampus);
 		elements.santaHealthMeter.setAttribute('value', health.santa);
 		elements.resultTitle.innerHTML = result.reset;
 		elements.result.setAttribute('aria-hidden', 'true');
+		elements.stage.classList.remove('fight-over', 'krampus-wins', 'santa-wins');
+		elements.santaKey1.style.cssText = btnUpStyles;
+		elements.santaKey2.style.cssText = btnUpStyles;
+		elements.krampusKey1.style.cssText = btnUpStyles;
+		elements.krampusKey2.style.cssText = btnUpStyles;
+		punch();
 	}
 
 	// Start
