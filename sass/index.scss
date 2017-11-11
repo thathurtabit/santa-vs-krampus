@@ -2,6 +2,7 @@ $baseTransitionTime:	0.5s;
 $red: 					#d96a71;
 $red2: 					adjust-color($red, 10%);
 $white:					#fff;
+$dark:					#333;
 
 .stage {
 	color: $white;
@@ -80,6 +81,54 @@ $white:					#fff;
 		transform: scale(1);
 		visibility: visible;
 	}
+}
+
+.result__title {
+	font-size: 15vw;
+}
+
+.fighters {
+	display: flex;
+	height: 75vh;
+}
+
+.santa-body,
+.krampus-body {
+	flex: 1;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+// Santa body parts (common)
+.santa-body__lu-arm,
+.santa-body__lf-arm,
+.santa-body__ru-arm,
+.santa-body__rf-arm,
+.krampus-body__lu-arm,
+.krampus-body__lf-arm,
+.krampus-body__ru-arm,
+.krampus-body__rf-arm {
+	//position: absolute;
+	background-color: $dark;
+	width: 30px;
+	height: 30px;
+}
+
+.santa-body__head,
+.krampus-body__head {
+	background-color: $white;
+	width: 10%;
+	height: 12%;
+}
+
+.santa-body__torso,
+.krampus-body__torso {
+	background-color: $white;
+	width: 40%;
+	height: 40%;
 }
 
 .instructions__santa,

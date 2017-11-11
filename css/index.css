@@ -63,6 +63,46 @@
     transform: scale(1);
     visibility: visible; }
 
+.result__title {
+  font-size: 15vw; }
+
+.fighters {
+  display: flex;
+  height: 75vh; }
+
+.santa-body,
+.krampus-body {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+
+.santa-body__lu-arm,
+.santa-body__lf-arm,
+.santa-body__ru-arm,
+.santa-body__rf-arm,
+.krampus-body__lu-arm,
+.krampus-body__lf-arm,
+.krampus-body__ru-arm,
+.krampus-body__rf-arm {
+  background-color: #333;
+  width: 30px;
+  height: 30px; }
+
+.santa-body__head,
+.krampus-body__head {
+  background-color: #fff;
+  width: 10%;
+  height: 12%; }
+
+.santa-body__torso,
+.krampus-body__torso {
+  background-color: #fff;
+  width: 40%;
+  height: 40%; }
+
 .instructions__santa,
 .instructions__krampus {
   bottom: 20px;

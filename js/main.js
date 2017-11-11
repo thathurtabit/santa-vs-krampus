@@ -29,10 +29,11 @@
 		santaPunch1:     		'a',
 		santaPunch2:     		's',
 		krampusPunch1:     	'k',
-		krampusPunch2:     	'l'
+		krampusPunch2:     	'l',
+		punchPower:  				0.05,
 	}
 
-	const canPunch = {
+	let canPunch = {
 		santaP1:  						true,
 		santaP2:  						true,
 		krampusP1:  					true,
@@ -67,15 +68,12 @@
 		    break;
 			  case attacks.santaPunch2:
 			  	pressedS();
-		    	checkKrampusHealth(keyName);
 		    break;
 		    case attacks.krampusPunch1:
 		    	pressedK();
-		    	checkSantaHealth(keyName);
 		    break;
 			  case attacks.krampusPunch2:
 		    	pressedL();
-		    	checkSantaHealth(keyName);
 		    break;
 			  default:
 			    break;
@@ -107,8 +105,8 @@
 
 	// Krampus Health
 	const checkKrampusHealth = function() {
-		if (health.krampus > 0.1) {
-			health.krampus = roundTo2((health.krampus -= 0.1), 2);
+		if (health.krampus > attacks.punchPower) {
+			health.krampus = roundTo2((health.krampus -= attacks.punchPower), 2);
 			elements.krampusHealthMeter.setAttribute('value', health.krampus);
 			console.log(`Krampus health: ${health.krampus}%`);
 		} else {			
@@ -126,8 +124,8 @@
 
 	// Santa Health
 	const checkSantaHealth = function() {
-		if (health.santa > 0.1) {
-			health.santa = roundTo2((health.santa -= 0.1), 2);
+		if (health.santa > attacks.punchPower) {
+			health.santa = roundTo2((health.santa -= attacks.punchPower), 2);
 			elements.santaHealthMeter.setAttribute('value', health.santa);
 			console.log(`Santa health: ${health.santa}%`);
 		} else {
@@ -146,40 +144,57 @@
 	const pressedA = function() {
 		elements.santaKey1.style.cssText = btnDownStyles;
 		// Throttle attach
-  	if (canPunch.santaPunch1) {
+  	if (canPunch.santaP1) {
   		checkKrampusHealth();
-  		canPunch.santaPunch1 = false; // turn off
+  		canPunch.santaP1 = false; // turn off
   	}
 	}
 
 	const leftA = function() {
 		elements.santaKey1.style.cssText = btnUpStyles;
-		// Turn on
-		canPunch.santaPunch1 = true;
+		canPunch.santaP1 = true; // Turn on
 	}
 
 	const pressedS = function() {
 		elements.santaKey2.style.cssText = btnDownStyles;
+		// Throttle attach
+  	if (canPunch.santaP2) {
+  		checkKrampusHealth();
+  		canPunch.santaP2 = false; // turn off
+  	}
 	}
 
 	const leftS = function() {
 		elements.santaKey2.style.cssText = btnUpStyles;
+		canPunch.santaP2 = true; // Turn on
 	}
 
 	const pressedK = function() {
 		elements.krampusKey1.style.cssText = btnDownStyles;
+		// Throttle attach
+  	if (canPunch.krampusP1) {
+  		checkSantaHealth();
+  		canPunch.krampusP1 = false; // turn off
+  	}
 	}
 
 	const leftK = function() {
 		elements.krampusKey1.style.cssText = btnUpStyles;
+		canPunch.krampusP1 = true; // turn on
 	}
 
 	const pressedL = function() {
 		elements.krampusKey2.style.cssText = btnDownStyles;
+		// Throttle attach
+  	if (canPunch.krampusP2) {
+  		checkSantaHealth();
+  		canPunch.krampusP2 = false; // turn off
+  	}
 	}
 
 	const leftL = function() {
 		elements.krampusKey2.style.cssText = btnUpStyles;
+		canPunch.krampusP2 = true; // turn on
 	}
 
 	// Reset fight...
