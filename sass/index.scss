@@ -3,6 +3,7 @@ $red: 					#d96a71;
 $red2: 					adjust-color($red, 10%);
 $white:					#fff;
 $dark:					#333;
+$armBend: 			45deg;
 
 .stage {
 	color: $white;
@@ -90,6 +91,7 @@ $dark:					#333;
 .fighters {
 	display: flex;
 	height: 75vh;
+	margin: 0 10%;
 }
 
 .santa-body,
@@ -102,33 +104,104 @@ $dark:					#333;
 	justify-content: center;
 }
 
-// Santa body parts (common)
-.santa-body__lu-arm,
-.santa-body__lf-arm,
-.santa-body__ru-arm,
-.santa-body__rf-arm,
-.krampus-body__lu-arm,
-.krampus-body__lf-arm,
-.krampus-body__ru-arm,
-.krampus-body__rf-arm {
-	//position: absolute;
+.santa-body {
+	margin-left: 10%;
+}
+
+.krampus-body {
+	margin-right: 10%;
+}
+
+// Arm parts (common)
+.santa-l-arm,
+.santa-r-arm,
+.krampus-l-arm,
+.krampus-r-arm {
+	position: relative;
+	top: 25%;
+	width: 100%;
+	height: 50px;
+}
+
+.santa-l-arm,
+.santa-r-arm,
+.krampus-l-arm,
+.krampus-r-arm {
+	position: absolute;
+}
+
+.santa-r-arm,
+.krampus-l-arm {
+	left: 50%;
+	z-index: 2;
+}
+
+.krampus-l-arm,
+.krampus-r-arm {
+	right: 50%;
+	left: auto;
+}
+
+.santa-l-arm {
+	left: 70%;
+}
+
+.krampus-r-arm {
+	right: 70%;
+}
+
+// Arm joints
+.santa-l-arm__upper,
+.santa-l-arm__lower,
+.santa-r-arm__upper,
+.santa-r-arm__lower,
+.krampus-l-arm__upper,
+.krampus-l-arm__lower,
+.krampus-r-arm__upper,
+.krampus-r-arm__lower {
 	background-color: $dark;
-	width: 30px;
-	height: 30px;
+	position: absolute;
+	height: 50%;
+	width: 60%;
+}
+
+.santa-l-arm__upper,
+.santa-r-arm__upper,
+.krampus-l-arm__upper,
+.krampus-r-arm__upper {
+	transform: rotate($armBend);
+	left: 0;
+}
+
+.santa-l-arm__lower,
+.santa-r-arm__lower,
+.krampus-l-arm__lower,
+.krampus-r-arm__lower {
+	transform: translateX(60%) rotate(-$armBend);
 }
 
 .santa-body__head,
 .krampus-body__head {
 	background-color: $white;
-	width: 10%;
-	height: 12%;
+	width: 20%;
+	height: 20%;
 }
 
 .santa-body__torso,
 .krampus-body__torso {
+	position: relative;
 	background-color: $white;
-	width: 40%;
-	height: 40%;
+	width: 60%;
+	height: 50%;
+}
+
+.santa-body__torso__inner,
+.krampus-body__torso__inner {
+	background-color: $white;
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
 }
 
 .instructions__santa,

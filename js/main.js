@@ -3,23 +3,40 @@
 
 	// Set vars
 	const elements = {
-		stage: 								document.getElementsByClassName('stage')[0],
-		header:  							document.getElementsByClassName('header')[0],
-		santaHealthMeter: 		document.getElementsByClassName('healthbar__santa-meter')[0],
-		krampusHealthMeter: 	document.getElementsByClassName('healthbar__krampus-meter')[0],
-		result:  							document.getElementsByClassName('result')[0],
-		resultTitle:  				document.getElementsByClassName('result__title')[0],
-		resetFight:  					document.getElementsByClassName('reset')[0],
-		santaKey1:  					document.getElementsByClassName('santa-key-a')[0],
-		santaKey2:  					document.getElementsByClassName('santa-key-s')[0],
-		krampusKey1:  				document.getElementsByClassName('krampus-key-k')[0],
-		krampusKey2:  				document.getElementsByClassName('krampus-key-l')[0]
+		stage: 										document.getElementsByClassName('stage')[0],
+		header:  									document.getElementsByClassName('header')[0],
+		santaHealthMeter: 				document.getElementsByClassName('healthbar__santa-meter')[0],
+		krampusHealthMeter: 			document.getElementsByClassName('healthbar__krampus-meter')[0],
+		result:  									document.getElementsByClassName('result')[0],
+		resultTitle:  						document.getElementsByClassName('result__title')[0],
+		resetFight:  							document.getElementsByClassName('reset')[0],
+		santaKey1:  							document.getElementsByClassName('santa-key-a')[0],
+		santaKey2:  							document.getElementsByClassName('santa-key-s')[0],
+		krampusKey1:  						document.getElementsByClassName('krampus-key-k')[0],
+		krampusKey2:  						document.getElementsByClassName('krampus-key-l')[0]
+	}
+
+	const fighters = {
+		santa: 										document.getElementsByClassName('santa-body')[0],
+		santaLeftUpperArm: 				document.getElementsByClassName('santa-l-arm__upper')[0],
+		santaLeftLowerArm: 				document.getElementsByClassName('santa-l-arm__lower')[0],
+		santaRightUpperArm: 			document.getElementsByClassName('santa-r-arm__upper')[0],
+		santaRightLowerArm: 			document.getElementsByClassName('santa-r-arm__lower')[0],
+		krampus: 									document.getElementsByClassName('krampus-body')[0],
+		krampusLeftUpperArm: 			document.getElementsByClassName('krampus-l-arm__upper')[0],
+		krampusLeftLowerArm: 			document.getElementsByClassName('krampus-l-arm__lower')[0],
+		krampusRightUpperArm: 		document.getElementsByClassName('krampus-r-arm__upper')[0],
+		krampusRightLowerArm: 		document.getElementsByClassName('krampus-r-arm__lower')[0]
 	}
 
 	const colors = {
 		white:  							'#fff',
 		dark: 								'#333',
 		transparent: 					'transparent'
+	}
+
+	const animation = {
+		armRotate:            45
 	}
 
 	const btnDownStyles = `background-color: ${colors.white}; color: ${colors.dark}`;
@@ -197,6 +214,83 @@
 		canPunch.krampusP2 = true; // turn on
 	}
 
+
+	// WEB API ANIMATIONS
+	// Settings
+	let santaBobOps = {
+	  iterations: Infinity,
+	  iterationStart: 0,
+	  delay: 0,
+	  endDelay: 0,
+	  direction: 'alternate',
+	  duration: 700,
+	  fill: 'forwards',
+	  easing: 'ease-in-out'
+	}
+
+	let krampusBobOps = {
+		iterations: Infinity,
+	  iterationStart: 0,
+	  delay: 300,
+	  endDelay: 0,
+	  direction: 'alternate',
+	  duration: 700,
+	  fill: 'forwards',
+	  easing: 'ease-in-out'
+	}
+
+	let fighterBob = [
+	  { 
+	    transform: 'translateY(10px)', 
+	    transformOrigin: '50% 50%'
+	  },
+	  { 
+	    transform: 'translateY(0)',
+	    transformOrigin: '50% 50%'
+	  }
+	];
+
+	let punchOps = {
+		iterations: Infinity,
+	  iterationStart: 0,
+	  delay: 0,
+	  endDelay: 0,
+	  direction: 'alternate',
+	  duration: 3000,
+	  fill: 'forwards',
+	  easing: 'ease-in-out'
+	}
+
+	// SANTA RIGHT ARM PUNCH
+	const santaRightUpperArmPunch = [
+	  { 
+	    transform: `rotate(${animation.armRotate}deg) translateY(0)`
+	  },
+	  { 
+	    transform: `rotate(-20deg) translateY(-30px)`
+	  }
+	];
+
+	const santaRightLowerArmPunch = [
+	  { 
+	    transform: `translateX(60%) rotate(-${animation.armRotate}deg) translateY(0)`
+	  },
+	  { 
+	    transform: `translateX(70%) rotate(-${animation.armRotate}deg) translateY(-60px)`
+	  }
+	];
+
+
+	// WEB API ANIMATIONS TRIGGER
+	// GO GO GO
+	fighters.santa.animate(fighterBob, santaBobOps);
+	fighters.krampus.animate(fighterBob, krampusBobOps);
+
+	// Need trigger
+	fighters.santaRightUpperArm.animate(santaRightUpperArmPunch, punchOps);
+	fighters.santaRightLowerArm.animate(santaRightLowerArmPunch, punchOps);
+
+	// RESET
 	// Reset fight...
 	elements.resetFight.addEventListener("click", function() {
 		reset();
