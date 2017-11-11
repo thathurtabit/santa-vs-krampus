@@ -18,11 +18,13 @@
 
 	const fighters = {
 		santa: 										document.getElementsByClassName('santa-body')[0],
+		santaHead: 								document.getElementsByClassName('santa-body__head')[0],
 		santaLeftUpperArm: 				document.getElementsByClassName('santa-l-arm__upper')[0],
 		santaLeftLowerArm: 				document.getElementsByClassName('santa-l-arm__lower')[0],
 		santaRightUpperArm: 			document.getElementsByClassName('santa-r-arm__upper')[0],
 		santaRightLowerArm: 			document.getElementsByClassName('santa-r-arm__lower')[0],
 		krampus: 									document.getElementsByClassName('krampus-body')[0],
+		krampusHead: 							document.getElementsByClassName('krampus-body__head')[0],
 		krampusLeftUpperArm: 			document.getElementsByClassName('krampus-l-arm__upper')[0],
 		krampusLeftLowerArm: 			document.getElementsByClassName('krampus-l-arm__lower')[0],
 		krampusRightUpperArm: 		document.getElementsByClassName('krampus-r-arm__upper')[0],
@@ -36,7 +38,9 @@
 	}
 
 	const animation = {
-		armRotate:            45
+		armRotate:            45,
+		headRotate:  					20,
+		punchDuration: 				10
 	}
 
 	const btnDownStyles = `background-color: ${colors.white}; color: ${colors.dark}`;
@@ -162,6 +166,10 @@
 		elements.santaKey1.style.cssText = btnDownStyles;
 		// Throttle attach
   	if (canPunch.santaP1) {
+  		// Animate punch
+			fighters.santaLeftUpperArm.animate(santaUpperArmPunch, punchOps);
+			fighters.santaLeftLowerArm.animate(santaLowerArmPunch, punchOps);
+			fighters.krampusHead.animate(krampusHeadWhack, punchOps);
   		checkKrampusHealth();
   		canPunch.santaP1 = false; // turn off
   	}
@@ -169,6 +177,10 @@
 
 	const leftA = function() {
 		elements.santaKey1.style.cssText = btnUpStyles;
+		// Animate return punch
+		fighters.santaLeftUpperArm.animate(santaUpperArmPunch, punchReturnOps);
+		fighters.santaLeftLowerArm.animate(santaLowerArmPunch, punchReturnOps);
+		fighters.krampusHead.animate(krampusHeadWhack, punchReturnOps);
 		canPunch.santaP1 = true; // Turn on
 	}
 
@@ -176,6 +188,10 @@
 		elements.santaKey2.style.cssText = btnDownStyles;
 		// Throttle attach
   	if (canPunch.santaP2) {
+  		// Animate punch
+			fighters.santaRightUpperArm.animate(santaUpperArmPunch, punchOps);
+			fighters.santaRightLowerArm.animate(santaLowerArmPunch, punchOps);
+			fighters.krampusHead.animate(krampusHeadWhack, punchOps);
   		checkKrampusHealth();
   		canPunch.santaP2 = false; // turn off
   	}
@@ -183,6 +199,10 @@
 
 	const leftS = function() {
 		elements.santaKey2.style.cssText = btnUpStyles;
+		// Animate return punch
+		fighters.santaRightUpperArm.animate(santaUpperArmPunch, punchReturnOps);
+		fighters.santaRightLowerArm.animate(santaLowerArmPunch, punchReturnOps);
+		fighters.krampusHead.animate(krampusHeadWhack, punchReturnOps);
 		canPunch.santaP2 = true; // Turn on
 	}
 
@@ -190,6 +210,10 @@
 		elements.krampusKey1.style.cssText = btnDownStyles;
 		// Throttle attach
   	if (canPunch.krampusP1) {
+  		// Animate punch
+			fighters.krampusLeftUpperArm.animate(krampusUpperArmPunch, punchOps);
+			fighters.krampusLeftLowerArm.animate(krampusLowerArmPunch, punchOps);
+			fighters.santaHead.animate(santaHeadWhack, punchOps);
   		checkSantaHealth();
   		canPunch.krampusP1 = false; // turn off
   	}
@@ -197,6 +221,10 @@
 
 	const leftK = function() {
 		elements.krampusKey1.style.cssText = btnUpStyles;
+		// Animate return punch
+		fighters.krampusLeftUpperArm.animate(krampusUpperArmPunch, punchReturnOps);
+		fighters.krampusLeftLowerArm.animate(krampusLowerArmPunch, punchReturnOps);
+		fighters.santaHead.animate(santaHeadWhack, punchReturnOps);
 		canPunch.krampusP1 = true; // turn on
 	}
 
@@ -204,6 +232,10 @@
 		elements.krampusKey2.style.cssText = btnDownStyles;
 		// Throttle attach
   	if (canPunch.krampusP2) {
+  		// Animate punch
+			fighters.krampusRightUpperArm.animate(krampusUpperArmPunch, punchOps);
+			fighters.krampusRightLowerArm.animate(krampusLowerArmPunch, punchOps);
+			fighters.santaHead.animate(santaHeadWhack, punchOps);
   		checkSantaHealth();
   		canPunch.krampusP2 = false; // turn off
   	}
@@ -211,6 +243,10 @@
 
 	const leftL = function() {
 		elements.krampusKey2.style.cssText = btnUpStyles;
+		// Animate return punch
+		fighters.krampusRightUpperArm.animate(krampusUpperArmPunch, punchReturnOps);
+		fighters.krampusRightLowerArm.animate(krampusLowerArmPunch, punchReturnOps);
+		fighters.santaHead.animate(santaHeadWhack, punchReturnOps);
 		canPunch.krampusP2 = true; // turn on
 	}
 
@@ -251,32 +287,89 @@
 	];
 
 	let punchOps = {
-		iterations: Infinity,
 	  iterationStart: 0,
 	  delay: 0,
 	  endDelay: 0,
-	  direction: 'alternate',
-	  duration: 3000,
+	  duration: animation.punchDuration,
 	  fill: 'forwards',
 	  easing: 'ease-in-out'
 	}
 
-	// SANTA RIGHT ARM PUNCH
-	const santaRightUpperArmPunch = [
+	let punchReturnOps = {
+	  iterationStart: 0,
+	  delay: 0,
+	  endDelay: 0,
+	  direction: 'reverse',
+	  duration: animation.punchDuration,
+	  fill: 'forwards',
+	  easing: 'ease-in-out'
+	}
+
+	// SANTA PUNCHES
+	const santaUpperArmPunch = [
 	  { 
-	    transform: `rotate(${animation.armRotate}deg) translateY(0)`
+	    transform: `translateY(0) rotate(${animation.armRotate}deg)`,
+	    transformOrigin: '0 50%'
 	  },
 	  { 
-	    transform: `rotate(-20deg) translateY(-30px)`
+	    transform: `translateY(-30px) rotate(-20deg)`,
+	    transformOrigin: '0 50%'
 	  }
 	];
 
-	const santaRightLowerArmPunch = [
+	const santaLowerArmPunch = [
 	  { 
-	    transform: `translateX(60%) rotate(-${animation.armRotate}deg) translateY(0)`
+	    transform: `translate(60%, 560%) rotate(-${animation.armRotate}deg)`,
+	    transformOrigin: '0 50%'
 	  },
 	  { 
-	    transform: `translateX(70%) rotate(-${animation.armRotate}deg) translateY(-60px)`
+	    transform: `translate(80%, -340%) rotate(-${animation.armRotate / 2}deg)`,
+	    transformOrigin: '0 50%'
+	  }
+	];
+
+	// KRAMPUS PUNCHES
+	const krampusUpperArmPunch = [
+	  { 
+	    transform: `translate(10%, 0) rotate(-${animation.armRotate}deg)`,
+	    transformOrigin: '100% 50%'
+	  },
+	  { 
+	    transform: `translate(10%, -90%) rotate(25deg)`,
+	    transformOrigin: '100% 50%'
+	  }
+	];
+
+	const krampusLowerArmPunch = [
+	  { 
+	    transform: `translate(-25%, 40%) rotate(${animation.armRotate}deg)`,
+	    transformOrigin: '0 50%'
+	  },
+	  { 
+	    transform: `translate(-65%, -700%) rotate(${animation.armRotate / 2}deg)`,
+	    transformOrigin: '0 50%'
+	  }
+	];
+
+	const santaHeadWhack = [
+	  { 
+	    transform: `rotate(0deg)`,
+	    transformOrigin: '50% 100%'
+	  },
+	  { 
+	    transform: `rotate(-${animation.headRotate}deg)`,
+	    transformOrigin: '50% 100%'
+	  }
+	];
+
+	const krampusHeadWhack = [
+	  { 
+	    transform: `rotate(0deg)`,
+	    transformOrigin: '50% 100%'
+	  },
+	  { 
+	    transform: `rotate(${animation.headRotate}deg)`,
+	    transformOrigin: '50% 100%'
 	  }
 	];
 
@@ -286,9 +379,6 @@
 	fighters.santa.animate(fighterBob, santaBobOps);
 	fighters.krampus.animate(fighterBob, krampusBobOps);
 
-	// Need trigger
-	fighters.santaRightUpperArm.animate(santaRightUpperArmPunch, punchOps);
-	fighters.santaRightLowerArm.animate(santaRightLowerArmPunch, punchOps);
 
 	// RESET
 	// Reset fight...
@@ -316,6 +406,17 @@
 		elements.santaKey2.style.cssText = btnUpStyles;
 		elements.krampusKey1.style.cssText = btnUpStyles;
 		elements.krampusKey2.style.cssText = btnUpStyles;
+		// Animate return punch
+		fighters.santaRightUpperArm.animate(santaUpperArmPunch, punchReturnOps);
+		fighters.santaRightLowerArm.animate(santaLowerArmPunch, punchReturnOps);
+		fighters.santaLeftUpperArm.animate(santaUpperArmPunch, punchReturnOps);
+		fighters.santaLeftLowerArm.animate(santaLowerArmPunch, punchReturnOps);
+		fighters.krampusRightUpperArm.animate(krampusUpperArmPunch, punchReturnOps);
+		fighters.krampusRightLowerArm.animate(krampusLowerArmPunch, punchReturnOps);
+		fighters.krampusLeftUpperArm.animate(krampusUpperArmPunch, punchReturnOps);
+		fighters.krampusLeftLowerArm.animate(krampusLowerArmPunch, punchReturnOps);
+		fighters.santaHead.animate(santaHeadWhack, punchReturnOps);
+		fighters.krampusHead.animate(krampusHeadWhack, punchReturnOps);
 		punch();
 	}
 

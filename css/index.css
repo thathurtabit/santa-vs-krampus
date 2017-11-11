@@ -128,13 +128,26 @@
   background-color: #333;
   position: absolute;
   height: 50%;
-  width: 60%; }
+  width: 90%; }
+
+.santa-l-arm__upper,
+.santa-l-arm__lower,
+.santa-r-arm__upper,
+.santa-r-arm__lower {
+  background-color: blue; }
+
+.krampus-l-arm__upper,
+.krampus-l-arm__lower,
+.krampus-r-arm__upper,
+.krampus-r-arm__lower {
+  background-color: orange; }
 
 .santa-l-arm__upper,
 .santa-r-arm__upper,
 .krampus-l-arm__upper,
 .krampus-r-arm__upper {
   transform: rotate(45deg);
+  transform-origin: 50% 50%;
   left: 0; }
 
 .santa-l-arm__lower,

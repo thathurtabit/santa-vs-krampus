@@ -162,7 +162,21 @@ $armBend: 			45deg;
 	background-color: $dark;
 	position: absolute;
 	height: 50%;
-	width: 60%;
+	width: 90%;
+}
+
+.santa-l-arm__upper,
+.santa-l-arm__lower,
+.santa-r-arm__upper,
+.santa-r-arm__lower, {
+	background-color: blue;
+}
+
+.krampus-l-arm__upper,
+.krampus-l-arm__lower,
+.krampus-r-arm__upper,
+.krampus-r-arm__lower {
+	background-color: orange;
 }
 
 .santa-l-arm__upper,
@@ -170,6 +184,7 @@ $armBend: 			45deg;
 .krampus-l-arm__upper,
 .krampus-r-arm__upper {
 	transform: rotate($armBend);
+	transform-origin: 50% 50%;
 	left: 0;
 }
 
