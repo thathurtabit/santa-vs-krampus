@@ -19,16 +19,30 @@
 	const fighters = {
 		santa: 										document.getElementsByClassName('santa-body')[0],
 		santaHead: 								document.getElementsByClassName('santa-body__head')[0],
+
 		santaLeftUpperArm: 				document.getElementsByClassName('santa-l-arm__upper')[0],
 		santaLeftLowerArm: 				document.getElementsByClassName('santa-l-arm__lower')[0],
 		santaRightUpperArm: 			document.getElementsByClassName('santa-r-arm__upper')[0],
 		santaRightLowerArm: 			document.getElementsByClassName('santa-r-arm__lower')[0],
+
+		santaLeftUpperLeg: 				document.getElementsByClassName('santa-legs__l-upper')[0],
+		santaLeftLowerLeg: 				document.getElementsByClassName('santa-legs__l-lower')[0],
+		santaRightUpperLeg: 			document.getElementsByClassName('santa-legs__r-upper')[0],
+		santaRightLowerLeg: 			document.getElementsByClassName('santa-legs__r-lower')[0],
+
 		krampus: 									document.getElementsByClassName('krampus-body')[0],
 		krampusHead: 							document.getElementsByClassName('krampus-body__head')[0],
+
 		krampusLeftUpperArm: 			document.getElementsByClassName('krampus-l-arm__upper')[0],
 		krampusLeftLowerArm: 			document.getElementsByClassName('krampus-l-arm__lower')[0],
 		krampusRightUpperArm: 		document.getElementsByClassName('krampus-r-arm__upper')[0],
-		krampusRightLowerArm: 		document.getElementsByClassName('krampus-r-arm__lower')[0]
+		krampusRightLowerArm: 		document.getElementsByClassName('krampus-r-arm__lower')[0],
+
+		krampusLeftUpperLeg: 				document.getElementsByClassName('krampus-legs__l-upper')[0],
+		krampusLeftLowerLeg: 				document.getElementsByClassName('krampus-legs__l-lower')[0],
+		krampusRightUpperLeg: 			document.getElementsByClassName('krampus-legs__r-upper')[0],
+		krampusRightLowerLeg: 			document.getElementsByClassName('krampus-legs__r-lower')[0]
+
 	}
 
 	const colors = {
@@ -38,7 +52,8 @@
 	}
 
 	const animation = {
-		armRotate:            45,
+		armRotate:            60,
+		legRotate:            30,
 		headRotate:  					20,
 		punchDuration: 				10
 	}
@@ -253,10 +268,32 @@
 
 	// WEB API ANIMATIONS
 	// Settings
-	let santaBobOps = {
+	let bobOps = {
 	  iterations: Infinity,
 	  iterationStart: 0,
 	  delay: 0,
+	  endDelay: 0,
+	  direction: 'alternate',
+	  duration: 700,
+	  fill: 'forwards',
+	  easing: 'ease-in-out'
+	}
+
+	let legBobOps = {
+	  iterations: Infinity,
+	  iterationStart: 0,
+	  delay: 0,
+	  endDelay: 0,
+	  direction: 'alternate',
+	  duration: 700,
+	  fill: 'forwards',
+	  easing: 'ease-in-out'
+	}
+
+	let krampusLegBobOps = {
+	  iterations: Infinity,
+	  iterationStart: 0,
+	  delay: 300,
 	  endDelay: 0,
 	  direction: 'alternate',
 	  duration: 700,
@@ -308,22 +345,22 @@
 	// SANTA PUNCHES
 	const santaUpperArmPunch = [
 	  { 
-	    transform: `translateY(0) rotate(${animation.armRotate}deg)`,
+	    transform: `translate(5%, -220%) rotate(${animation.armRotate}deg)`,
 	    transformOrigin: '0 50%'
 	  },
 	  { 
-	    transform: `translateY(-30px) rotate(-20deg)`,
+	    transform: `translate(5%, -140%) rotate(-20deg)`,
 	    transformOrigin: '0 50%'
 	  }
 	];
 
 	const santaLowerArmPunch = [
 	  { 
-	    transform: `translate(60%, 560%) rotate(-${animation.armRotate}deg)`,
+	    transform: `translate(52%, 480%) rotate(-${animation.armRotate}deg)`,
 	    transformOrigin: '0 50%'
 	  },
 	  { 
-	    transform: `translate(80%, -340%) rotate(-${animation.armRotate / 2}deg)`,
+	    transform: `translate(90%, -380%) rotate(-${animation.armRotate / 2}deg)`,
 	    transformOrigin: '0 50%'
 	  }
 	];
@@ -331,22 +368,22 @@
 	// KRAMPUS PUNCHES
 	const krampusUpperArmPunch = [
 	  { 
-	    transform: `translate(10%, 0) rotate(-${animation.armRotate}deg)`,
+	    transform: `translate(5%, -180%) rotate(-${animation.armRotate}deg)`,
 	    transformOrigin: '100% 50%'
 	  },
 	  { 
-	    transform: `translate(10%, -90%) rotate(25deg)`,
+	    transform: `translate(5%, -150%) rotate(20deg)`,
 	    transformOrigin: '100% 50%'
 	  }
 	];
 
 	const krampusLowerArmPunch = [
 	  { 
-	    transform: `translate(-25%, 40%) rotate(${animation.armRotate}deg)`,
+	    transform: `translate(10%, -170%) rotate(${animation.armRotate}deg)`,
 	    transformOrigin: '0 50%'
 	  },
 	  { 
-	    transform: `translate(-65%, -700%) rotate(${animation.armRotate / 2}deg)`,
+	    transform: `translate(-70%, -815%) rotate(${animation.armRotate / 2}deg)`,
 	    transformOrigin: '0 50%'
 	  }
 	];
@@ -373,11 +410,42 @@
 	  }
 	];
 
+	const upperLegBend = [
+	  { 
+	    transform: `translate(230%, 0) rotate(-${animation.legRotate}deg)`,
+	    transformOrigin: '50% 100%'
+	  },
+	  { 
+	    transform: `translate(125%, -25%) rotate(-${animation.legRotate - 20}deg)`,
+	    transformOrigin: '50% 100%'
+	  }
+	];
+
+	const lowerLegBend = [
+	  { 
+	    transform: `rotate(${animation.legRotate}deg)`,
+	    transformOrigin: '50% 100%'
+	  },
+	  { 
+	    transform: `rotate(${animation.legRotate - 20}deg)`,
+	    transformOrigin: '50% 100%'
+	  }
+	];
+
 
 	// WEB API ANIMATIONS TRIGGER
 	// GO GO GO
-	fighters.santa.animate(fighterBob, santaBobOps);
+	fighters.santa.animate(fighterBob, bobOps);
 	fighters.krampus.animate(fighterBob, krampusBobOps);
+	fighters.santa.animate(fighterBob, bobOps);
+	fighters.santaLeftUpperLeg.animate(upperLegBend, legBobOps);
+	fighters.krampusLeftUpperLeg.animate(upperLegBend, krampusLegBobOps);
+	fighters.santaRightUpperLeg.animate(upperLegBend, legBobOps);
+	fighters.krampusRightUpperLeg.animate(upperLegBend, krampusLegBobOps);
+	fighters.santaLeftLowerLeg.animate(lowerLegBend, legBobOps);
+	fighters.krampusLeftLowerLeg.animate(lowerLegBend, krampusLegBobOps);
+	fighters.santaRightLowerLeg.animate(lowerLegBend, legBobOps);
+	fighters.krampusRightLowerLeg.animate(lowerLegBend, krampusLegBobOps);
 
 
 	// RESET
@@ -406,7 +474,7 @@
 		elements.santaKey2.style.cssText = btnUpStyles;
 		elements.krampusKey1.style.cssText = btnUpStyles;
 		elements.krampusKey2.style.cssText = btnUpStyles;
-		// Animate return punch
+		// Animate return punches
 		fighters.santaRightUpperArm.animate(santaUpperArmPunch, punchReturnOps);
 		fighters.santaRightLowerArm.animate(santaLowerArmPunch, punchReturnOps);
 		fighters.santaLeftUpperArm.animate(santaUpperArmPunch, punchReturnOps);
