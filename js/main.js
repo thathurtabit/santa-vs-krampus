@@ -53,7 +53,7 @@
 
 	const animation = {
 		armRotate:            60,
-		legRotate:            30,
+		legRotate:            5,
 		headRotate:  					20,
 		punchDuration: 				10
 	}
@@ -356,7 +356,7 @@
 
 	const santaLowerArmPunch = [
 	  { 
-	    transform: `translate(52%, 480%) rotate(-${animation.armRotate}deg)`,
+	    transform: `translate(30%, 480%) rotate(-${animation.armRotate}deg)`,
 	    transformOrigin: '0 50%'
 	  },
 	  { 
@@ -412,22 +412,22 @@
 
 	const upperLegBend = [
 	  { 
-	    transform: `translate(30%, 0) rotate(-${animation.legRotate}deg)`,
+	    transform: `translate(0, 0) rotate(-${animation.legRotate}deg)`,
 	    transformOrigin: '50% 100%'
 	  },
 	  { 
-	    transform: `translate(30%, -25%) rotate(-${animation.legRotate - 20}deg)`,
+	    transform: `translate(0, 0) rotate(0deg)`,
 	    transformOrigin: '50% 100%'
 	  }
 	];
 
 	const lowerLegBend = [
 	  { 
-	    transform: `rotate(${animation.legRotate}deg)`,
+	    transform: `translate(0, 25%)rotate(${animation.legRotate}deg)`,
 	    transformOrigin: '50% 100%'
 	  },
 	  { 
-	    transform: `rotate(${animation.legRotate - 20}deg)`,
+	    transform: `translate(0, 25%) rotate(0deg)`,
 	    transformOrigin: '50% 100%'
 	  }
 	];

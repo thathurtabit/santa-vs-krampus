@@ -124,7 +124,7 @@ $armBend: 			60deg;
 	height: 50px;
 	position: relative;
 	top: 25%;
-	width: 100%;
+	width: 80%;
 }
 
 .santa-l-arm,
@@ -187,13 +187,11 @@ $armBend: 			60deg;
 
 .santa-l-arm__lower,
 .santa-r-arm__lower {
-	background-color: blue;
-	transform: translate(24%, 123%) rotate(-$armBend);
+	transform: translate(0%, 123%) rotate(-$armBend);
 }
 
 .santa-l-arm__upper,
 .santa-r-arm__upper {
-	background-color: blue;
 	transform: translate(-20%, 123%) rotate($armBend);
 }
 
@@ -252,7 +250,6 @@ $armBend: 			60deg;
 .krampus-legs__l-lower,
 .krampus-legs__r-upper,
 .krampus-legs__r-lower {
-	background-color: rgba(0,0,0,0.2);
 	height: 50%;
 	left: 30%;
 	position: absolute;
@@ -264,6 +261,25 @@ $armBend: 			60deg;
 .santa-legs__r-upper,
 .krampus-legs__r-upper  {
 	transform: rotate(-30deg);
+}
+
+.santa-legs__r-upper,
+.santa-legs__r-lower {
+	z-index: 5;
+}
+
+.santa-legs__l-foot,
+.santa-legs__r-foot {
+	bottom: -10%;
+	height: 20%;
+	left: 29%;
+	position: absolute;
+	width: 44%;
+	z-index: 5;
+}
+
+.santa-legs__l-foot {
+	left: 52%;
 }
 
 .santa-legs__l-lower,
