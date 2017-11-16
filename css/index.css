@@ -70,17 +70,18 @@
 .fighters {
   display: flex;
   height: 75vh;
-  margin: 0 10%;
+  margin: 0 auto;
+  max-width: 910px;
   position: relative; }
 
 .santa-body,
 .krampus-body {
-  flex: 1;
-  position: relative;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  flex: 1;
   justify-content: center;
+  position: relative;
   z-index: 2; }
 
 .santa-body {
@@ -93,10 +94,10 @@
 .santa-r-arm,
 .krampus-l-arm,
 .krampus-r-arm {
+  height: 50px;
   position: relative;
   top: 25%;
-  width: 100%;
-  height: 50px; }
+  width: 100%; }
 
 .santa-l-arm,
 .santa-r-arm,
@@ -111,8 +112,8 @@
 
 .krampus-l-arm,
 .krampus-r-arm {
-  right: 50%;
-  left: auto; }
+  left: auto;
+  right: 50%; }
 
 .santa-l-arm {
   left: 70%; }
@@ -128,8 +129,8 @@
 .krampus-l-arm__lower,
 .krampus-r-arm__upper,
 .krampus-r-arm__lower {
-  position: absolute;
   height: 50%;
+  position: absolute;
   width: 90%; }
 
 .krampus-l-arm__upper,
@@ -158,41 +159,41 @@
 
 .santa-body__head,
 .krampus-body__head {
-  background-color: #fff;
-  width: 20%;
-  height: 20%; }
+  height: 10%;
+  position: relative;
+  top: -20%;
+  width: 50%;
+  z-index: 10; }
 
 .santa-body__torso,
 .krampus-body__torso {
+  height: 50%;
   position: relative;
-  background-color: #fff;
-  width: 60%;
-  height: 50%; }
+  width: 70%; }
 
 .santa-body__torso__inner,
 .krampus-body__torso__inner {
-  background-color: #fff;
+  height: 100%;
   position: absolute;
-  z-index: 2;
   width: 100%;
-  height: 100%; }
+  z-index: 2; }
 
 .santa-legs {
-  position: absolute;
+  bottom: 25%;
   height: 25%;
-  width: 25%;
   left: 25%;
+  position: absolute;
   transform: translate(-30%, 100%);
-  bottom: 16%;
+  width: 25%;
   z-index: -1; }
 
 .krampus-legs {
-  position: absolute;
+  bottom: 16%;
   height: 25%;
-  width: 25%;
+  position: absolute;
   right: 10%;
   transform: translate(-30%, 100%);
-  bottom: 16%;
+  width: 25%;
   z-index: 1; }
 
 .santa-legs__l-upper,
@@ -203,11 +204,11 @@
 .krampus-legs__l-lower,
 .krampus-legs__r-upper,
 .krampus-legs__r-lower {
-  width: 10px;
-  background-color: #333;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 50%;
+  left: 30%;
   position: absolute;
-  height: 33%;
-  left: 55%; }
+  width: 40%; }
 
 .santa-legs__l-upper,
 .krampus-legs__l-upper,
@@ -226,7 +227,7 @@
 .santa-legs__l-lower,
 .krampus-legs__r-upper,
 .krampus-legs__r-lower {
-  left: 45%; }
+  left: 55%; }
 
 .instructions__santa,
 .instructions__krampus {

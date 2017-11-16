@@ -391,32 +391,32 @@
 	const santaHeadWhack = [
 	  { 
 	    transform: `rotate(0deg)`,
-	    transformOrigin: '50% 100%'
+	    transformOrigin: '0% 100%'
 	  },
 	  { 
 	    transform: `rotate(-${animation.headRotate}deg)`,
-	    transformOrigin: '50% 100%'
+	    transformOrigin: '0% 100%'
 	  }
 	];
 
 	const krampusHeadWhack = [
 	  { 
 	    transform: `rotate(0deg)`,
-	    transformOrigin: '50% 100%'
+	    transformOrigin: '100% 100%'
 	  },
 	  { 
 	    transform: `rotate(${animation.headRotate}deg)`,
-	    transformOrigin: '50% 100%'
+	    transformOrigin: '100% 100%'
 	  }
 	];
 
 	const upperLegBend = [
 	  { 
-	    transform: `translate(230%, 0) rotate(-${animation.legRotate}deg)`,
+	    transform: `translate(30%, 0) rotate(-${animation.legRotate}deg)`,
 	    transformOrigin: '50% 100%'
 	  },
 	  { 
-	    transform: `translate(125%, -25%) rotate(-${animation.legRotate - 20}deg)`,
+	    transform: `translate(30%, -25%) rotate(-${animation.legRotate - 20}deg)`,
 	    transformOrigin: '50% 100%'
 	  }
 	];
