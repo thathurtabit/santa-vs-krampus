@@ -54,7 +54,7 @@
 	const animation = {
 		armRotate:            60,
 		legRotate:            5,
-		headRotate:  					20,
+		headRotate:  					15,
 		punchDuration: 				10
 	}
 
@@ -368,44 +368,44 @@
 	// KRAMPUS PUNCHES
 	const krampusUpperArmPunch = [
 	  { 
-	    transform: `translate(5%, -180%) rotate(-${animation.armRotate}deg)`,
+	    transform: `translate(-10%, -180%) rotate(-${animation.armRotate}deg)`,
 	    transformOrigin: '100% 50%'
 	  },
 	  { 
-	    transform: `translate(5%, -150%) rotate(20deg)`,
+	    transform: `translate(-10%, -150%) rotate(20deg)`,
 	    transformOrigin: '100% 50%'
 	  }
 	];
 
 	const krampusLowerArmPunch = [
 	  { 
-	    transform: `translate(10%, -170%) rotate(${animation.armRotate}deg)`,
+	    transform: `translate(20%, -170%) rotate(${animation.armRotate}deg)`,
 	    transformOrigin: '0 50%'
 	  },
 	  { 
-	    transform: `translate(-70%, -815%) rotate(${animation.armRotate / 2}deg)`,
+	    transform: `translate(-70%, -700%) rotate(${animation.armRotate / 2}deg)`,
 	    transformOrigin: '0 50%'
 	  }
 	];
 
 	const santaHeadWhack = [
 	  { 
-	    transform: `rotate(0deg)`,
+	    transform: `translate(0, 0) rotate(0deg)`,
 	    transformOrigin: '0% 100%'
 	  },
 	  { 
-	    transform: `rotate(-${animation.headRotate}deg)`,
+	    transform: `translate(-30%, 10%) rotate(-${animation.headRotate}deg)`,
 	    transformOrigin: '0% 100%'
 	  }
 	];
 
 	const krampusHeadWhack = [
 	  { 
-	    transform: `rotate(0deg)`,
+	    transform: `translate(0, 0) rotate(0deg)`,
 	    transformOrigin: '100% 100%'
 	  },
 	  { 
-	    transform: `rotate(${animation.headRotate}deg)`,
+	    transform: `translate(40%, 30%) rotate(${animation.headRotate}deg)`,
 	    transformOrigin: '100% 100%'
 	  }
 	];

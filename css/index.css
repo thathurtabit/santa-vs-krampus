@@ -134,18 +134,12 @@
   width: 90%; }
 
 .krampus-l-arm__upper,
-.krampus-l-arm__lower,
-.krampus-r-arm__upper,
-.krampus-r-arm__lower {
-  background-color: orange; }
-
-.krampus-l-arm__upper,
 .krampus-r-arm__upper {
-  transform: translate(-16%, 123%) rotate(60deg); }
+  transform: translate(21%, 123%) rotate(-60deg); }
 
 .krampus-l-arm__lower,
 .krampus-r-arm__lower {
-  transform: translate(28%, 140%) rotate(-60deg); }
+  transform: translate(0, 140%) rotate(60deg); }
 
 .santa-l-arm__lower,
 .santa-r-arm__lower {
@@ -163,11 +157,19 @@
   width: 50%;
   z-index: 10; }
 
+.krampus-body__head {
+  top: -23%; }
+
 .santa-body__torso,
 .krampus-body__torso {
   height: 50%;
   position: relative;
   width: 70%; }
+
+.krampus-body__torso {
+  width: 71%;
+  left: 18%;
+  height: 63%; }
 
 .santa-body__torso__inner,
 .krampus-body__torso__inner {
@@ -186,13 +188,13 @@
   z-index: -1; }
 
 .krampus-legs {
-  bottom: 16%;
+  bottom: 28%;
   height: 25%;
   position: absolute;
-  right: 10%;
+  right: 9%;
   transform: translate(-30%, 100%);
   width: 25%;
-  z-index: 1; }
+  z-index: 2; }
 
 .santa-legs__l-upper,
 .santa-legs__l-lower,
@@ -241,6 +243,29 @@
 .krampus-legs__r-upper,
 .krampus-legs__r-lower {
   left: 55%; }
+
+.krampus-legs__r-upper {
+  left: 59%; }
+
+.krampus-legs__r-lower,
+.krampus-legs__l-lower {
+  z-index: -1;
+  left: 27%; }
+
+.krampus-legs__r-lower {
+  left: 56%; }
+
+.krampus-legs__r-foot,
+.krampus-legs__l-foot {
+  bottom: -10%;
+  height: 20%;
+  left: 17%;
+  position: absolute;
+  width: 25%;
+  z-index: 5; }
+
+.krampus-legs__r-foot {
+  left: 47%; }
 
 .instructions__santa,
 .instructions__krampus {
