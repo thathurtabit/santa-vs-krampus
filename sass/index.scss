@@ -1,4 +1,5 @@
 $baseTransitionTime:	0.5s;
+$areaWidth:			910px;
 $red: 					#d96a71;
 $red2: 					adjust-color($red, 10%);
 $white:					#fff;
@@ -27,6 +28,34 @@ $armBend: 			60deg;
 		background-color: $red2;
 		left: 50%;
 	}
+}
+
+.responsive-message {
+	align-items: center;
+	background-color: $white;
+	box-shadow: 0 5px 5px rgba(0,0,0,0.05);
+	color: $dark;
+	display: flex;
+	font-family: 'Bangers';
+	flex-direction: column;
+	height: 75%;
+	justify-content: center;
+	left: 50%;
+	padding: 30px;
+	position: fixed;
+	text-align: center;
+	top: 50%;
+	transform: translate(-50%, -50%) skew(-2.5deg);
+	width: 75%;
+
+	@media screen and (min-width: 910px) {
+		display: none;
+	}
+}
+
+.responsive-message h4 {
+	font-size: 25px;
+	margin: 15px;
 }
 
 .header {
@@ -91,10 +120,13 @@ $armBend: 			60deg;
 
 .fighters {
 	display: flex;
-	height: 75vh;
-	margin: 0 auto;
-	max-width: 910px;
-	position: relative;
+	height: 645px;
+	margin: 0;
+	width: $areaWidth;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .santa-body,
@@ -148,10 +180,12 @@ $armBend: 			60deg;
 
 .santa-l-arm {
 	left: 70%;
+	z-index: -1;
 }
 
 .krampus-r-arm {
 	right: 70%;
+	z-index: -1;
 }
 
 // Arm joints
@@ -263,7 +297,7 @@ $armBend: 			60deg;
 .krampus-legs__l-upper,
 .santa-legs__r-upper,
 .krampus-legs__r-upper  {
-	transform: rotate(-30deg);
+	transform: rotate(0deg);
 }
 
 .santa-legs__r-upper,
@@ -289,8 +323,8 @@ $armBend: 			60deg;
 .krampus-legs__l-lower,
 .santa-legs__r-lower,
 .krampus-legs__r-lower {
-	transform: rotate(30deg);
-	top: 20%;
+	transform: rotate(0deg);
+	top: 32%;
 }
 
 .santa-legs__l-upper,

@@ -360,7 +360,7 @@
 	    transformOrigin: '0 50%'
 	  },
 	  { 
-	    transform: `translate(90%, -380%) rotate(-${animation.armRotate / 2}deg)`,
+	    transform: `translate(85%, -320%) rotate(-${animation.armRotate / 2}deg)`,
 	    transformOrigin: '0 50%'
 	  }
 	];
@@ -368,22 +368,22 @@
 	// KRAMPUS PUNCHES
 	const krampusUpperArmPunch = [
 	  { 
-	    transform: `translate(-10%, -180%) rotate(-${animation.armRotate}deg)`,
+	    transform: `translate(-15%, -180%) rotate(-${animation.armRotate}deg)`,
 	    transformOrigin: '100% 50%'
 	  },
 	  { 
-	    transform: `translate(-10%, -150%) rotate(20deg)`,
+	    transform: `translate(-15%, -150%) rotate(20deg)`,
 	    transformOrigin: '100% 50%'
 	  }
 	];
 
 	const krampusLowerArmPunch = [
 	  { 
-	    transform: `translate(20%, -170%) rotate(${animation.armRotate}deg)`,
+	    transform: `translate(10%, -170%) rotate(${animation.armRotate}deg)`,
 	    transformOrigin: '0 50%'
 	  },
 	  { 
-	    transform: `translate(-70%, -700%) rotate(${animation.armRotate / 2}deg)`,
+	    transform: `translate(-80%, -700%) rotate(${animation.armRotate / 2}deg)`,
 	    transformOrigin: '0 50%'
 	  }
 	];
@@ -423,11 +423,11 @@
 
 	const lowerLegBend = [
 	  { 
-	    transform: `translate(0, 25%)rotate(${animation.legRotate}deg)`,
+	    transform: `translate(0, 0)rotate(${animation.legRotate}deg)`,
 	    transformOrigin: '50% 100%'
 	  },
 	  { 
-	    transform: `translate(0, 25%) rotate(0deg)`,
+	    transform: `translate(0, 0) rotate(0deg)`,
 	    transformOrigin: '50% 100%'
 	  }
 	];
