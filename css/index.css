@@ -1,20 +1,13 @@
+body {
+  overflow: hidden; }
+
 .stage {
-  color: #fff;
+  color: #333;
   font-family: 'Bangers';
   height: 100vh;
   overflow: hidden;
-  position: relative; }
-  .stage::before, .stage::after {
-    content: '';
-    background-color: #d96a71;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    width: 50%;
-    z-index: -1; }
-  .stage::after {
-    background-color: #e36a71;
-    left: 50%; }
+  position: relative;
+  z-index: 1; }
 
 .responsive-message {
   align-items: center;
@@ -53,6 +46,16 @@
   display: flex;
   flex: 1; }
 
+.background {
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  z-index: 0; }
+
 .healthbar__santa,
 .healthbar__krampus {
   display: flex;
@@ -69,7 +72,7 @@
 
 .result {
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.5);
   bottom: 0;
   display: flex;
   flex-direction: column;
@@ -90,6 +93,7 @@
     visibility: visible; }
 
 .result__title {
+  color: #fff;
   font-size: 15vw; }
 
 .fighters {
@@ -100,7 +104,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -43%); }
 
 .santa-body,
 .krampus-body {

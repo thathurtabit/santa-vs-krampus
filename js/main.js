@@ -46,8 +46,8 @@
 	}
 
 	const colors = {
-		white:  							'#fff',
-		dark: 								'#333',
+		white:  							'#333',
+		dark: 								'#fff',
 		transparent: 					'transparent'
 	}
 

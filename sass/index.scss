@@ -6,28 +6,17 @@ $white:					#fff;
 $dark:					#333;
 $armBend: 			60deg;
 
+body {
+	overflow: hidden;
+}
+
 .stage {
-	color: $white;
+	color: $dark;
 	font-family: 'Bangers';
 	height: 100vh;
 	overflow: hidden;
 	position: relative;
-	
-	&::before,
-	&::after {
-		content: '';
-		background-color: $red;
-		height: 100vh;
-		position: absolute;
-		top: 0;
-		width: 50%;
-		z-index: -1;
-	}
-
-	&::after {
-		background-color: $red2;
-		left: 50%;
-	}
+	z-index: 1;
 }
 
 .responsive-message {
@@ -72,6 +61,17 @@ $armBend: 			60deg;
 	flex: 1;
 }
 
+.background {
+	bottom: 0;
+	height: 100vh;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100vw;
+	z-index: 0;
+}
+
 .healthbar__santa,
 .healthbar__krampus {
 	display: flex;
@@ -91,7 +91,7 @@ $armBend: 			60deg;
 
 .result {
 	align-items: center;
-	background-color: rgba(0,0,0,0.2);
+	background-color: rgba(0,0,0,0.5);
 	bottom: 0;
 	display: flex;
 	flex-direction: column;
@@ -115,6 +115,7 @@ $armBend: 			60deg;
 }
 
 .result__title {
+	color: $white;
 	font-size: 15vw;
 }
 
@@ -126,7 +127,7 @@ $armBend: 			60deg;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -43%);
 }
 
 .santa-body,
