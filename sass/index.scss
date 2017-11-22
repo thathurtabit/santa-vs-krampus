@@ -91,7 +91,6 @@ body {
 
 .result {
 	align-items: center;
-	background-color: rgba(0,0,0,0.5);
 	bottom: 0;
 	display: flex;
 	flex-direction: column;
@@ -112,11 +111,41 @@ body {
 		transform: scale(1);
 		visibility: visible;
 	}
+
+	.santa-wins & {
+		background-color: rgba(217, 106, 113, 0.85);
+	}
+
+	.krampus-wins & {
+		background-color: rgba(0, 0, 0, 0.85);
+	}
 }
+
+%a-pulse {
+	text-shadow: 3px 3px rgba(0, 0, 0, 0.2), 0 0 rgba(255, 255, 255, 0);
+	animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		text-shadow: 3px 3px rgba(0, 0, 0, 0.2), 0 0 rgba(255, 255, 255, 0.2);
+	}
+
+	70% {
+		text-shadow: 3px 3px rgba(0, 0, 0, 0.2), 0 50px rgba(255, 255, 255, 0);
+	}
+
+	100% {
+		text-shadow: 3px 3px rgba(0, 0, 0, 0.2), 0 0 rgba(255, 255, 255, 0);
+	}
+}
+
 
 .result__title {
 	color: $white;
 	font-size: 15vw;
+	@extend %a-pulse;
+	text-shadow: 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 .fighters {
@@ -382,10 +411,22 @@ body {
 	text-align: right;
 }
 
+
+.instructions__players {
+	position: absolute;
+	text-align: center;
+	top: -33%;
+
+	span {
+		font-size: 30px;
+	}
+}
+
 .santa-key-a,
 .santa-key-s,
 .krampus-key-k,
 .krampus-key-l {
+	background: rgba(255,255,255,0.5);
 	border: 2px solid $white;
 	display: inline-block;
 	font-size: 25px;
@@ -393,4 +434,28 @@ body {
 	padding: 10px;
 	text-align: center;
 	width: 25px;
+}
+
+.btn-reset {
+	background: $white;
+	border-radius: 0;
+	border: 0;
+	box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+	color: #333;
+	font-family: 'Bangers';
+	font-size: 20px;
+	padding: 15px 25px;
+	position: relative;
+	outline: 0;
+
+	&:hover {
+		background-color: $dark;
+		color: $white;
+		cursor: pointer;
+	}
+
+	&:active {
+		box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+		top: 3px;
+	}
 }

@@ -9,7 +9,7 @@
 		krampusHealthMeter: 			document.getElementsByClassName('healthbar__krampus-meter')[0],
 		result:  									document.getElementsByClassName('result')[0],
 		resultTitle:  						document.getElementsByClassName('result__title')[0],
-		resetFight:  							document.getElementsByClassName('reset')[0],
+		resetFight:  							document.getElementsByClassName('btn-reset')[0],
 		santaKey1:  							document.getElementsByClassName('santa-key-a')[0],
 		santaKey2:  							document.getElementsByClassName('santa-key-s')[0],
 		krampusKey1:  						document.getElementsByClassName('krampus-key-k')[0],
@@ -48,7 +48,7 @@
 	const colors = {
 		white:  							'#333',
 		dark: 								'#fff',
-		transparent: 					'transparent'
+		transparent: 					'rgba(255, 255, 255, 0.5)'
 	}
 
 	const animation = {
