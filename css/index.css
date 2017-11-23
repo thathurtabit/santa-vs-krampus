@@ -95,7 +95,10 @@ body {
   .krampus-wins .result {
     background-color: rgba(0, 0, 0, 0.85); }
 
-.result__title {
+.result__title, .santa-key-a,
+.santa-key-s,
+.krampus-key-k,
+.krampus-key-l {
   text-shadow: 3px 3px rgba(0, 0, 0, 0.2), 0 0 rgba(255, 255, 255, 0);
   animation: pulse 1s infinite; }
 
@@ -333,12 +336,20 @@ body {
 .instructions__krampus p {
   text-align: right; }
 
+.instructions__players {
+  position: absolute;
+  text-align: center;
+  top: -33%; }
+  .instructions__players span {
+    font-size: 30px; }
+
 .santa-key-a,
 .santa-key-s,
 .krampus-key-k,
 .krampus-key-l {
-  background: rgba(255, 255, 255, 0.5);
-  border: 2px solid #fff;
+  background: #fff;
+  border: 2px solid #333;
+  color: #d96a71;
   display: inline-block;
   font-size: 25px;
   margin: 10px;

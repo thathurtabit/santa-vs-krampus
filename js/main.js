@@ -46,9 +46,9 @@
 	}
 
 	const colors = {
-		white:  							'#333',
+		white:  							'#d96a71',
 		dark: 								'#fff',
-		transparent: 					'rgba(255, 255, 255, 0.5)'
+		transparent: 					'rgba(255, 255, 255, 0.95)'
 	}
 
 	const animation = {

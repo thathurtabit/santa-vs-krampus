@@ -426,8 +426,10 @@ body {
 .santa-key-s,
 .krampus-key-k,
 .krampus-key-l {
-	background: rgba(255,255,255,0.5);
-	border: 2px solid $white;
+	@extend %a-pulse;
+	background: $white;
+	border: 2px solid $dark;
+	color: $red;
 	display: inline-block;
 	font-size: 25px;
 	margin: 10px;
@@ -441,7 +443,7 @@ body {
 	border-radius: 0;
 	border: 0;
 	box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
-	color: #333;
+	color: $dark;
 	font-family: 'Bangers';
 	font-size: 20px;
 	padding: 15px 25px;
