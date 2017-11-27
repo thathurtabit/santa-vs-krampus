@@ -18,6 +18,7 @@
 
 	const fighters = {
 		santa: 										document.getElementsByClassName('santa-body')[0],
+    santaLegs:                document.getElementsByClassName('santa-legs')[0],
 		santaHead: 								document.getElementsByClassName('santa-body__head')[0],
 
 		santaLeftUpperArm: 				document.getElementsByClassName('santa-l-arm__upper')[0],
@@ -31,6 +32,7 @@
 		santaRightLowerLeg: 			document.getElementsByClassName('santa-legs__r-lower')[0],
 
 		krampus: 									document.getElementsByClassName('krampus-body')[0],
+    krampusLegs:              document.getElementsByClassName('krampus-legs')[0],
 		krampusHead: 							document.getElementsByClassName('krampus-body__head')[0],
 
 		krampusLeftUpperArm: 			document.getElementsByClassName('krampus-l-arm__upper')[0],
@@ -155,6 +157,8 @@
 	const sanataWins = function() {
 		elements.stage.classList.add('fight-over', 'santa-wins');
 		elements.resultTitle.innerHTML = result.sanataWins;
+    fighters.krampus.animate(krampusTorsoFlyingAway, flyAway);
+    fighters.krampusLegs.animate(krampusLegsFlyingAway, flyAway);
 		removeEvents();
 	}
 
@@ -174,6 +178,8 @@
 	const krampusWins = function() {
 		elements.stage.classList.add('fight-over', 'krampus-wins');
 		elements.resultTitle.innerHTML = result.krampusWins;
+    fighters.santa.animate(santaTorsoFlyingAway, flyAway);
+    fighters.santaLegs.animate(santaLegsFlyingAway, flyAway);
 		removeEvents();
 	}
 
@@ -312,6 +318,28 @@
 	  easing: 'ease-in-out'
 	}
 
+  let flyAway = {
+    iterations: 1,
+    iterationStart: 0,
+    delay: 0,
+    endDelay: 0,
+    direction: 'alternate',
+    duration: 3000,
+    fill: 'forwards',
+    easing: 'ease-out'
+  }
+
+  let flyAwayReverse = {
+    iterations: 1,
+    iterationStart: 0,
+    delay: 0,
+    endDelay: 0,
+    direction: 'reverse',
+    duration: 0,
+    fill: 'forwards',
+    easing: 'ease-out'
+  }
+
 	let fighterBob = [
 	  { 
 	    transform: 'translateY(10px)', 
@@ -432,21 +460,65 @@
 	  }
 	];
 
+  const krampusTorsoFlyingAway = [
+    { 
+      transform: `translate(0, 0) rotate(0deg)`,
+      transformOrigin: '50% 50%'
+    },
+    { 
+      transform: `translate(250%, 0) rotate(20deg)`,
+      transformOrigin: '50% 50%'
+    }
+  ];
+
+  const krampusLegsFlyingAway = [
+    { 
+      transform: `translate(-30%, 100%) rotate(0deg)`,
+      transformOrigin: '50% 50%'
+    },
+    { 
+      transform: `translate(350%, 100%) rotate(20deg)`,
+      transformOrigin: '50% 50%'
+    }
+  ];
+
+  const santaTorsoFlyingAway = [
+    { 
+      transform: `translate(0, 0) rotate(0deg)`,
+      transformOrigin: '50% 50%'
+    },
+    { 
+      transform: `translate(-300%, 0) rotate(-30deg)`,
+      transformOrigin: '50% 50%'
+    }
+  ];
+
+  const santaLegsFlyingAway = [
+    { 
+      transform: `translate(-35%, 100%) rotate(0deg)`,
+      transformOrigin: '50% 50%'
+    },
+    { 
+      transform: `translate(-550%, 100%) rotate(-30deg)`,
+      transformOrigin: '50% 50%'
+    }
+  ];
+
 
 	// WEB API ANIMATIONS TRIGGER
 	// GO GO GO
-	fighters.santa.animate(fighterBob, bobOps);
-	fighters.krampus.animate(fighterBob, krampusBobOps);
-	fighters.santa.animate(fighterBob, bobOps);
-	fighters.santaLeftUpperLeg.animate(upperLegBend, legBobOps);
-	fighters.krampusLeftUpperLeg.animate(upperLegBend, krampusLegBobOps);
-	fighters.santaRightUpperLeg.animate(upperLegBend, legBobOps);
-	fighters.krampusRightUpperLeg.animate(upperLegBend, krampusLegBobOps);
-	fighters.santaLeftLowerLeg.animate(lowerLegBend, legBobOps);
-	fighters.krampusLeftLowerLeg.animate(lowerLegBend, krampusLegBobOps);
-	fighters.santaRightLowerLeg.animate(lowerLegBend, legBobOps);
-	fighters.krampusRightLowerLeg.animate(lowerLegBend, krampusLegBobOps);
-
+  const bobbing = function() {
+  	fighters.santa.animate(fighterBob, bobOps);
+  	fighters.krampus.animate(fighterBob, krampusBobOps);
+  	fighters.santaLeftUpperLeg.animate(upperLegBend, legBobOps);
+  	fighters.krampusLeftUpperLeg.animate(upperLegBend, krampusLegBobOps);
+  	fighters.santaRightUpperLeg.animate(upperLegBend, legBobOps);
+  	fighters.krampusRightUpperLeg.animate(upperLegBend, krampusLegBobOps);
+  	fighters.santaLeftLowerLeg.animate(lowerLegBend, legBobOps);
+  	fighters.krampusLeftLowerLeg.animate(lowerLegBend, krampusLegBobOps);
+  	fighters.santaRightLowerLeg.animate(lowerLegBend, legBobOps);
+  	fighters.krampusRightLowerLeg.animate(lowerLegBend, krampusLegBobOps);
+  }
 
 	// RESET
 	// Reset fight...
@@ -485,12 +557,20 @@
 		fighters.krampusLeftLowerArm.animate(krampusLowerArmPunch, punchReturnOps);
 		fighters.santaHead.animate(santaHeadWhack, punchReturnOps);
 		fighters.krampusHead.animate(krampusHeadWhack, punchReturnOps);
+    
+    fighters.krampus.animate(krampusTorsoFlyingAway, flyAwayReverse);
+    fighters.krampusLegs.animate(krampusLegsFlyingAway, flyAwayReverse);
+    fighters.santa.animate(santaTorsoFlyingAway, flyAwayReverse);
+    fighters.santaLegs.animate(santaLegsFlyingAway, flyAwayReverse);
+
+    bobbing();
 		punch();
 	}
 
 	// Start
 	const start = function() {
 		punch();
+    bobbing();
 	}
 
 	window.onload = function () {
