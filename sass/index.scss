@@ -51,7 +51,7 @@ body {
 	left: 50%;
 	position: absolute;
   text-align: center;
-  top: 100px;
+  top: 0;
   transform: translate(-50%, 0);
   transition: transform $baseTransitionTime ease-out, opacity $baseTransitionTime ease-out;
 }
@@ -76,7 +76,8 @@ body {
 .healthbar__krampus {
 	display: flex;
 	flex: 1;
-	padding: 30px;
+	padding: 57px;
+	position: relative;
 }
 
 .healthbar__krampus h3 {
@@ -407,19 +408,34 @@ body {
 	right: 20px;
 }
 
-.instructions__krampus p {
-	text-align: right;
+.instructions__santa::before {
+	border-color: transparent transparent transparent rgba(255,255,255,0.95);
+	border-style: solid;
+	border-width: 200px 0 0 400px;
+	bottom: -20px;
+	content: '';
+	height: 0;
+	left: -20px;
+	position: absolute;
+	width: 0;
+	z-index: -1;
 }
 
-
-.instructions__players {
+.instructions__krampus::before {
+	border-color: transparent transparent rgba(255,255,255,0.95) transparent;
+	border-style: solid;
+	border-width: 0 0 200px 400px;
+	bottom: -20px;
+	content: '';
+	height: 0;
+	right: -20px;
 	position: absolute;
-	text-align: center;
-	top: -33%;
+	width: 0;
+	z-index: -1;
+}
 
-	span {
-		font-size: 30px;
-	}
+.instructions__krampus p {
+	text-align: right;
 }
 
 .santa-key-a,
