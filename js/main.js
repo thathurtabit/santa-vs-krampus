@@ -466,7 +466,7 @@
       transformOrigin: '50% 50%'
     },
     { 
-      transform: `translate(250%, 0) rotate(20deg)`,
+      transform: `translate(350%, 0) rotate(20deg)`,
       transformOrigin: '50% 50%'
     }
   ];
@@ -477,7 +477,7 @@
       transformOrigin: '50% 50%'
     },
     { 
-      transform: `translate(350%, 100%) rotate(20deg)`,
+      transform: `translate(500%, 100%) rotate(20deg)`,
       transformOrigin: '50% 50%'
     }
   ];
@@ -488,7 +488,7 @@
       transformOrigin: '50% 50%'
     },
     { 
-      transform: `translate(-300%, 0) rotate(-30deg)`,
+      transform: `translate(-400%, 0) rotate(-30deg)`,
       transformOrigin: '50% 50%'
     }
   ];
@@ -499,7 +499,7 @@
       transformOrigin: '50% 50%'
     },
     { 
-      transform: `translate(-550%, 100%) rotate(-30deg)`,
+      transform: `translate(-600%, 100%) rotate(-30deg)`,
       transformOrigin: '50% 50%'
     }
   ];

@@ -36,6 +36,7 @@ body {
 	top: 50%;
 	transform: translate(-50%, -50%) skew(-2.5deg);
 	width: 75%;
+	z-index: 20;
 
 	@media screen and (min-width: 910px) {
 		display: none;
@@ -458,6 +459,7 @@ body {
 	background: $white;
 	border-radius: 0;
 	border: 0;
+	bottom: 10%;
 	box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
 	color: $dark;
 	font-family: 'Bangers';
@@ -474,6 +476,6 @@ body {
 
 	&:active {
 		box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
-		top: 3px;
+		bottom: 9.5%;
 	}
 }
